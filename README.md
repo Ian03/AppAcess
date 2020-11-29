@@ -2,6 +2,8 @@
  application of studies
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Compatibility
+Android [![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
  
  
  ## [What should it be?](#Whatshoulditbe?)
@@ -14,9 +16,6 @@ an application that I am developing with my studies in java android studio ⭐
 ```text
 -under construction
 ```
-
-## Compatibility
-Android [![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
 
 ## [License](#license)
 
