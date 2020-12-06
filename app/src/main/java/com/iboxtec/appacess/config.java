@@ -9,42 +9,44 @@ import android.widget.Button;
 
 import com.iboxtec.appacess.messagebox.clsmessagebox;
 
-public class MainActivity extends AppCompatActivity
-{
+public class config extends AppCompatActivity {
+
     //Buttons
-    Button buttonAlert, buttonConfig;
+    Button buttonmain, buttonAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_config);
 
         //Cls Message
         clsmessagebox clsMessage = new clsmessagebox();
 
         //Buttons
-        buttonAlert = findViewById(R.id.buttonalertMain);
-        buttonConfig = findViewById(R.id.buttonconfigMain);
+        buttonmain = findViewById(R.id.buttonmainConfig);
+        buttonAbout = findViewById(R.id.buttonaboutConfig);
 
         //Click event
-        buttonAlert.setOnClickListener(new View.OnClickListener() {
+        buttonmain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                clsMessage.messagebox("Messagem Alerta", "Messagem de boas vindas","Entendi", MainActivity.this);
-            }
-        });
-
-        buttonConfig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent activityIntent = new Intent(getApplicationContext(), config.class);
+                Intent activityIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(activityIntent);
             }
         });
 
+        buttonAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                clsMessage.messagebox("Messagem Alerta", "Aplicativo em desenvolvimento por Ian","Entendi", config.this);
+            }
+        });
+
+
     }
+
 
 }
