@@ -10,87 +10,78 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.iboxtec.appacess.messagebox.clsmessagebox;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-public class registre extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     //Input
-    TextInputEditText InputfullNameRegistre, InputEmailRegistre, InputuserNameRegistre, InputPasswordRegistre;
+    TextInputEditText InputfullNameRegistre, InputPasswordRegistre;
     //Buttons
-    Button ButtonRegistre,ButtonloginRegistre;
+    Button ButtonLogin,ButtonregistreLogin;
     //ProgressBar
-    ProgressBar ProgressBarRegistre;
+    ProgressBar ProgressbarLogin;
     //String to input
-    String fullname, username, password, email;
+    String username, password, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_registre);
+        setContentView(R.layout.activity_login);
 
         //Cls Message
         clsmessagebox clsMessage = new clsmessagebox();
 
         //Input
-        InputfullNameRegistre = findViewById(R.id.inputfullnameRegistre);
-        InputEmailRegistre = findViewById(R.id.inputemailRegistre);
-        InputuserNameRegistre = findViewById(R.id.inputusernameRegistre);
-        InputPasswordRegistre = findViewById(R.id.inputpasswordRegistre);
+        InputfullNameRegistre = findViewById(R.id.inputusernameLogin);
+        InputPasswordRegistre = findViewById(R.id.inputpasswordLogin);
 
         //Buttons
-        ButtonRegistre = findViewById(R.id.buttonRegistre);
-        ButtonloginRegistre = findViewById(R.id.buttonloginRegistre);
+        ButtonLogin = findViewById(R.id.buttonLogin);
+        ButtonregistreLogin = findViewById(R.id.buttonregistreLogin);
         //Progress bar
-        ProgressBarRegistre = findViewById(R.id.progressbarRegistre);
+        ProgressbarLogin = findViewById(R.id.progressbarLogin);
 
         //Click event
-        ButtonRegistre.setOnClickListener(new View.OnClickListener() {
+        ButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                fullname = String.valueOf(InputfullNameRegistre.getText());
-                email = String.valueOf(InputEmailRegistre.getText());
-                username = String.valueOf(InputuserNameRegistre.getText());
+                username = String.valueOf(InputfullNameRegistre.getText());
                 password = String.valueOf(InputPasswordRegistre.getText());
 
-                if (!fullname.equals("") && !email.equals("") && !username.equals("") && !password.equals("")) {
+                if (!username.equals("") && !password.equals("")) {
 
                     //Start ProgressBar first (Set visibility VISIBLE)
-                    ProgressBarRegistre.setVisibility(View.VISIBLE);
+                    ProgressbarLogin.setVisibility(View.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[4];
-                            field[0] = "fullname";
-                            field[1] = "email";
-                            field[2] = "username";
-                            field[3] = "password";
+                            String[] field = new String[2];
+                            field[0] = "username";
+                            field[1] = "password";
                             //Creating array for data
-                            String[] data = new String[4];
-                            data[0] = fullname;
-                            data[1] = email;
-                            data[2] = username;
-                            data[3] = password;
-                            PutData putData = new PutData("http://appacess.iboxtec.com/signup.php", "POST", field, data);
+                            String[] data = new String[2];
+                            data[0] = username;
+                            data[1] = password;
+                            PutData putData = new PutData("http://appacess.iboxtec.com/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
-                                    ProgressBarRegistre.setVisibility(View.GONE);
+                                    ProgressbarLogin.setVisibility(View.GONE);
                                     String result = putData.getResult();
                                     //End ProgressBar (Set visibility to GONE)
-                                    if (result.equals("Sign Up Success"))
+                                    if (result.equals("Login Success"))
                                     {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        Intent activityIntent = new Intent(getApplicationContext(), login.class);
-                                        startActivity(activityIntent);
+                                        Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(activity2Intent);
                                         finish();
                                     }
                                     else
@@ -106,19 +97,18 @@ public class registre extends AppCompatActivity {
                 }
                 else
                 {
-                    clsMessage.messagebox("Messagem Alerta", "Favor preencher todos os campos","Entendi", registre.this);
+                    clsMessage.messagebox("Messagem Alerta", "Favor preencher todos os campos","Entendi", login.this);
                 }
 
             }
         });
 
-        ButtonloginRegistre.setOnClickListener(new View.OnClickListener() {
+        ButtonregistreLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activityIntent = new Intent(getApplicationContext(), login.class);
+                Intent activityIntent = new Intent(getApplicationContext(), registre.class);
                 startActivity(activityIntent);
             }
         });
-
     }
 }

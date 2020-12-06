@@ -24,7 +24,7 @@ public class config extends AppCompatActivity {
         clsmessagebox clsMessage = new clsmessagebox();
 
         //Buttons
-        buttonmain = findViewById(R.id.buttonmainConfig);
+        buttonmain = findViewById(R.id.buttonConfig);
         buttonAbout = findViewById(R.id.buttonaboutConfig);
 
         //Click event

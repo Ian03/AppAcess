@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.iboxtec.appacess.messagebox.clsmessagebox;
 
@@ -13,6 +14,8 @@ public class MainActivity extends AppCompatActivity
 {
     //Buttons
     Button buttonAlert, buttonConfig;
+    //
+    TextView TxtWellcomeMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity
         //Buttons
         buttonAlert = findViewById(R.id.buttonalertMain);
         buttonConfig = findViewById(R.id.buttonconfigMain);
+        //Text
+        TxtWellcomeMain = findViewById(R.id.txtWellcomeMain);
 
         //Click event
         buttonAlert.setOnClickListener(new View.OnClickListener() {
