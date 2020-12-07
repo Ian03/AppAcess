@@ -4,18 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.iboxtec.appacess.messagebox.clsmessagebox;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class MainActivity extends AppCompatActivity
 {
     //Buttons
     Button buttonAlert, buttonConfig;
+    //Float button
+    FloatingActionButton buttonRefresh;
     //
-    TextView TxtWellcomeMain;
+   public TextView TxtWellcomeMain;
+    //ProgressBar
+    ProgressBar ProgressbarMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,8 +40,10 @@ public class MainActivity extends AppCompatActivity
         //Buttons
         buttonAlert = findViewById(R.id.buttonalertMain);
         buttonConfig = findViewById(R.id.buttonconfigMain);
-        //Text
-        TxtWellcomeMain = findViewById(R.id.txtWellcomeMain);
+        //Float button
+        buttonRefresh = findViewById(R.id.buttonFloatingMain);
+        //Progress bar
+        ProgressbarMain = findViewById(R.id.progressbarMain);
 
         //Click event
         buttonAlert.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +62,14 @@ public class MainActivity extends AppCompatActivity
                 startActivity(activityIntent);
             }
         });
+        buttonRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //Start ProgressBar first (Set visibility VISIBLE)
+               // ProgressbarMain.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
-
 }

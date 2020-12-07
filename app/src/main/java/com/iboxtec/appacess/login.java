@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,7 +26,7 @@ public class login extends AppCompatActivity {
     //ProgressBar
     ProgressBar ProgressbarLogin;
     //String to input
-    String username, password, email;
+    String username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class login extends AppCompatActivity {
                                     else
                                     {
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                                        //clsMain.TxtWellcomeMain.setText("");
                                     }
                                     Log.i("PutData", result);
                                 }
